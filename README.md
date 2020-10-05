@@ -239,6 +239,11 @@ There are three main directories in the `ui-react/src/` folder:
     email = email + '@' + auth.domain + '.com';
     ```
 
+* J’ai créé la Room Mailbox (roommailbox@evoklabs.ch) depuis l’interface web.
+Ensuite, depuis PowerShell j’ai créé le « DistGroup » (New-DistributionGroup -Name DistGroup -DisplayName "DistGroup" –PrimarySmtpAddress vasco.dagama@evoklabs.ch –RoomList) , et j’ai ajouté la mailbox à DistGroup (Add-DistributionGroupMember –Identity roommailbox@evoklabs.ch -Member DistGroup).
+Finalement, j’ai donné les droits au calendrier (Add-MailboxFolderPermission -Identity roommailbox@evoklabs.ch:\calendar -user vasco.dagama@evoklabs.ch) -AccessRights Editor).
+ 
+
 ***
 
 ## Flightboard Layout Mockup
