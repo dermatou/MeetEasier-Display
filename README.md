@@ -93,15 +93,17 @@ version: '3.7'
 
 services:
   meeteasier-app:
-    image: trcha/meeteasier:latest
+    container_name: meeteasier
+    build:
+      context: source
     ports:
       - '8088:8080'
     restart: unless-stopped
     environment:
-      - USERNAME='email'
-      - PASSWORD='password'
-      - DOMAIN='your.domain'
-
+      - USERNAME='email_address'
+      - PASSWORD='passwords'
+      - DOMAIN='evoklabs.ch'
+      - URI='https://outlook.com/ews/exchange.asmx'
     networks:
       - meeteasier
 
@@ -239,9 +241,10 @@ There are three main directories in the `ui-react/src/` folder:
     email = email + '@' + auth.domain + '.com';
     ```
 
-* J’ai créé la Room Mailbox (roommailbox@evoklabs.ch) depuis l’interface web.
-Ensuite, depuis PowerShell j’ai créé le « DistGroup » (New-DistributionGroup -Name DistGroup -DisplayName "DistGroup" –PrimarySmtpAddress vasco.dagama@evoklabs.ch –RoomList) , et j’ai ajouté la mailbox à DistGroup (Add-DistributionGroupMember –Identity roommailbox@evoklabs.ch -Member DistGroup).
-Finalement, j’ai donné les droits au calendrier (Add-MailboxFolderPermission -Identity roommailbox@evoklabs.ch:\calendar -user vasco.dagama@evoklabs.ch) -AccessRights Editor).
+* EXCHANGE SETUP
+Room Mailbox (roommailbox@evoklabs.ch) has been created through the interface.
+From PowerShell, create « DistGroup » (New-DistributionGroup -Name DistGroup -DisplayName "DistGroup" –PrimarySmtpAddress vasco.dagama@evoklabs.ch –RoomList) and add mailbox to DistGroup (Add-DistributionGroupMember –Identity roommailbox@evoklabs.ch -Member DistGroup).
+Finaly, give proper rights to calendar (Add-MailboxFolderPermission -Identity roommailbox@evoklabs.ch:\calendar -user vasco.dagama@evoklabs.ch) -AccessRights Editor).
  
 
 ***
