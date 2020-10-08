@@ -100,10 +100,10 @@ services:
       - '8088:8080'
     restart: unless-stopped
     environment:
-      - USERNAME='email_address'
-      - PASSWORD='passwords'
-      - DOMAIN='evoklabs.ch'
-      - URI='https://outlook.com/ews/exchange.asmx'
+      - USERNAME=email_address
+      - PASSWORD=password
+      - DOMAIN=evoklabs.ch
+      - URI=https://outlook.com/ews/exchange.asmx
     networks:
       - meeteasier
 
