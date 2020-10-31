@@ -12,7 +12,8 @@
     "start-ui-dev": "cd ui-react && npm start"
   },
   "dependencies": {
-    "ews-javascript-api": "0.8.0",
+    "@ewsjs/xhr": "^1.4.2",
+    "ews-javascript-api": "^0.10.3",
     "express": "4.16.2",
     "grunt": "1.0.1",
     "grunt-contrib-sass": "1.0.0",
