@@ -2,12 +2,18 @@ module.exports = function (callback) {
 
   // modules -------------------------------------------------------------------
   var ews = require("ews-javascript-api");
+  var XhrApi = require("@ewsjs/xhr").XhrApi;
   var auth = require("../../config/auth.js");
   var blacklist = require("../../config/room-blacklist.js");
 
+  // xhr ----------------------------------------------------------------------
+  var xhr = new XhrApi({rejectUnauthorized: false}).useNtlmAuthentication(auth.exchange.username, auth.exchange.password);
+  ews.ConfigurationApi.ConfigureXHR(xhr);
+
   // ews -----------------------------------------------------------------------
   var exch = new ews.ExchangeService(ews.ExchangeVersion.Exchange2016);
-  exch.Credentials = new ews.ExchangeCredentials(auth.exchange.username, auth.exchange.password);
+  exch.AcceptGzipEncoding = false;
+  exch.Credentials = new ews.WebCredentials(auth.exchange.username, auth.exchange.password);
   exch.Url = new ews.Uri(auth.exchange.uri);
 
 
@@ -115,7 +121,7 @@ module.exports = function (callback) {
 
       roomAddresses.forEach(function(room, index, array){
         var calendarFolderId = new ews.FolderId(ews.WellKnownFolderName.Calendar, new ews.Mailbox(room.Email));
-        var view = new ews.CalendarView(ews.DateTime.Now, new ews.DateTime(ews.DateTime.Now.TotalMilliSeconds + ews.TimeSpan.FromHours(240).asMilliseconds()), 6);
+        var view = new ews.CalendarView(ews.DateTime.Now, new ews.DateTime(ews.DateTime.Now.TotalMilliSeconds + 864000000), 6);
         exch.FindAppointments(calendarFolderId, view).then((response) => {
           fillRoomData(context, room, response.Items);
         }, (error) => {
