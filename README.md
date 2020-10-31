@@ -102,7 +102,7 @@ services:
     environment:
       - USERNAME=email_address
       - PASSWORD=password
-      - DOMAIN=evoklabs.ch
+      - DOMAIN=domain.com
       - URI=https://outlook.com/ews/exchange.asmx
     networks:
       - meeteasier
@@ -242,9 +242,9 @@ There are three main directories in the `ui-react/src/` folder:
     ```
 
 * EXCHANGE SETUP
-Room Mailbox (roommailbox@evoklabs.ch) has been created through the interface.
-From PowerShell, create « DistGroup » (New-DistributionGroup -Name DistGroup -DisplayName "DistGroup" –PrimarySmtpAddress vasco.dagama@evoklabs.ch –RoomList) and add mailbox to DistGroup (Add-DistributionGroupMember –Identity roommailbox@evoklabs.ch -Member DistGroup).
-Finaly, give proper rights to calendar (Add-MailboxFolderPermission -Identity roommailbox@evoklabs.ch:\calendar -user vasco.dagama@evoklabs.ch) -AccessRights Editor).
+Room Mailbox (roommailbox@domain.com) has been created through the interface.
+From PowerShell, create « DistGroup » (New-DistributionGroup -Name DistGroup -DisplayName "DistGroup" –PrimarySmtpAddress email@domain.com –RoomList) and add mailbox to DistGroup (Add-DistributionGroupMember –Identity roommailbox@domain.com -Member DistGroup).
+Finaly, give proper rights to calendar (Add-MailboxFolderPermission -Identity roommailbox@domain.com:\calendar -user email@domain.com) -AccessRights Editor).
  
 
 ***
