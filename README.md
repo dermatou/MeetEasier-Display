@@ -88,12 +88,13 @@ This application assumes you have:
 ***
 ## Install on a docker instance - Composefile
 
-. Make a folder, pull the source code in a source folder, create a docker-compose.yml file with the content below (adjust the environment variables) and build the container.
+Make a folder, pull the source code in a source folder, create a docker-compose.yml file with the content below (adjust the environment variables) and build the container and finally start it up. You can also look at logs if anything is not working as expected. Container should be running on http://_____:8088
 ```
 git clone https://github.com/dermatou/MeetEasier-Display.git source
 vim docker-compose.yml 
 docker-compose build
 docker-compose up -d
+docker-compose logs
 ```
 content of docker-compose.yml file:
 ```
