@@ -87,6 +87,14 @@ This application assumes you have:
 
 ***
 ## Composefile
+
+install on a docker instance. Make a folder, pull the source code in a source folder, create a docker-compose.yml file with the content below (adjust the environment variables) and build the container.
+```
+git clone https://github.com/dermatou/MeetEasier-Display.git source
+vim docker-compose.yml 
+docker-compose build
+docker-compose up -d
+```
 https://hub.docker.com/repository/docker/trcha/meeteasier
 ```
 version: '3.7'
